@@ -111,11 +111,7 @@ const Test = () => {
       cubeMeshThirteen, cubeMeshFourteen, cubeMeshFifteen, cubeMeshSixteen, cubeMeshSeventeen,
       cubeMeshEighteen, cubeMeshNineteen, cubeMeshTwenty, cubeMeshTwentyOne, cubeMeshTwentyTwo,
       cubeMeshTwentyThree, cubeMeshTwentyFour, cubeMeshTwentyFive, cubeMeshTwentySix, cubeMeshTwentySeven);
-    // scene.add(group);
-
-    const cubeContainer = new THREE.Group();
-    cubeContainer.add(group);
-    scene.add(cubeContainer);
+    scene.add(group);
 
     const light = new THREE.AmbientLight(0xffffff, 0.2);
     scene.add(light);
@@ -287,10 +283,6 @@ const Test = () => {
       } else if (layer.axis === 'z') {
         layerPivot.rotation.z = rotationAngle;
       }
-
-
-      // cubeContainer.rotation.y += THREE.MathUtils.degToRad(1) * delta * 20;
-      // cubeContainer.rotation.x += THREE.MathUtils.degToRad(1) * delta * 20;
 
       controls.update();
       renderer.render(scene, camera);
