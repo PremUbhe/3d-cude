@@ -111,7 +111,11 @@ const Test = () => {
       cubeMeshThirteen, cubeMeshFourteen, cubeMeshFifteen, cubeMeshSixteen, cubeMeshSeventeen,
       cubeMeshEighteen, cubeMeshNineteen, cubeMeshTwenty, cubeMeshTwentyOne, cubeMeshTwentyTwo,
       cubeMeshTwentyThree, cubeMeshTwentyFour, cubeMeshTwentyFive, cubeMeshTwentySix, cubeMeshTwentySeven);
-    scene.add(group);
+    // scene.add(group);
+
+    const cubeContainer = new THREE.Group();
+    cubeContainer.add(group);
+    scene.add(cubeContainer);
 
     const light = new THREE.AmbientLight(0xffffff, 0.2);
     scene.add(light);
@@ -159,6 +163,8 @@ const Test = () => {
 
     const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 3;
 
     window.addEventListener("resize", () => {
       camera.aspect = window.innerWidth / window.innerHeight;
@@ -281,6 +287,10 @@ const Test = () => {
       } else if (layer.axis === 'z') {
         layerPivot.rotation.z = rotationAngle;
       }
+
+
+      // cubeContainer.rotation.y += THREE.MathUtils.degToRad(1) * delta * 20;
+      // cubeContainer.rotation.x += THREE.MathUtils.degToRad(1) * delta * 20;
 
       controls.update();
       renderer.render(scene, camera);
